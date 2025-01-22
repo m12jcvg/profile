@@ -1,0 +1,54 @@
+<div class="min-h-screen flex flex-col items-center justify-center bg-white p-4">
+  <div class="flex flex-col justify-center">
+    <img
+      src="<%= asset_path 'profile.jpg' %>"
+      alt="Julio's Profile Picture"
+      class="w-32 h-32 rounded-full object-cover shadow-md"
+    />
+  </div>
+
+  <div class="text-center mt-6">
+    <h1 class="text-4xl font-bold text-primary">Hi! I'm Julio</h1>
+    <p class="mt-2 text-xl text-neutral-medium">Software Engineer | Full-Stack Developer | RoR Enthusiast</p>
+  </div>
+
+  <div class="mt-6">
+    <a
+      href="<%= new_chat_path %>"
+      class="<%= default_button_class %>"
+      data-turbo-stream
+    >
+      <% if Config.maintenance_mode? %>
+        Maintenance Mode, chat is disabled
+      <% else %>
+        Let's Chat
+      <% end %>
+    </a>
+  </div>
+
+  <div class="mt-4 text-center text-neutral-medium">
+    <p>Ask me anything about my projects or experience!</p>
+    <p class="text-xs">I can also chat about tacos (coming soon) or the weather in Ottawa(coming soon).</p>
+  </div>
+  
+  <div class="mt-8 flex space-x-6">
+    <a 
+      href="https://www.linkedin.com/in/julio-vidal-1a598a162/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="text-primary hover:text-primary-dark transition-colors duration-200"
+    >
+      <span class="ml-1">LinkedIn</span>
+    </a>
+    <a 
+      href="https://github.com/julio-vidal" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="text-primary hover:text-primary-dark transition-colors duration-200 flex flex-row items-center"
+    >
+      <span class="ml-1">Source Code</span>
+    </a>
+  </div>
+</div>
+
+<%= turbo_frame_tag 'chat' %>

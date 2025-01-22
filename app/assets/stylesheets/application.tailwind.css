@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .primary-button {
+    @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-light;
+  }
+
+  .disabled-button {
+    @apply bg-neutral-light text-neutral-medium px-6 py-3 rounded-md hover:bg-neutral-light focus:outline-none cursor-not-allowed;
+  }
+}
+
+

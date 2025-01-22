@@ -1,0 +1,7 @@
+<%= turbo_stream.append "messages" do %>
+ <div class="flex justify-end mt-2" data-controller="autoscroll">
+    <div class="bg-blue-500 text-white rounded-lg p-3 max-w-[80%]">
+      <p><%= @message.content %></p>
+    </div>
+  </div>
+<% end %>
