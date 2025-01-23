@@ -14,7 +14,7 @@ class GenerateAssistantResponseJob < ApplicationJob
 
       ai_client.messages.create(thread_id: chat.thread_id, parameters: { role: "user", content: last_message_content })
 
-      # TODO: stream loading state
+      stream_loading_state(chat_id)
 
       run_id = ai_client.runs.create(thread_id: chat.thread_id, parameters: { assistant_id: ASSISTANT_ID })["id"]
       result = handle_run_completion(run_id, chat.thread_id, chat.id)
@@ -51,6 +51,14 @@ class GenerateAssistantResponseJob < ApplicationJob
     messages = ai_client.messages.list(thread_id: thread_id)
     last_message = messages["data"].first["content"].first["text"]["value"]
     stream_response [ last_message ], chat_id
+  end
+
+  def stream_loading_state(chat_id)
+    Turbo::StreamsChannel.broadcast_render_to(
+      "messages_#{chat_id}",
+      partial: "chats/bot_loading",
+      locals: { chat_id: }
+    )
   end
 
   def ai_client

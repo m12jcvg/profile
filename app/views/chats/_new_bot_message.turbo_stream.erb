@@ -1,3 +1,7 @@
+<% if show_profile_picture %>
+  <%= turbo_stream.remove "loading_bot_message" %>
+<% end %>
+
 <%= turbo_stream.append "messages" do %>
   <div class="flex items-start space-x-2 mt-2" data-controller="autoscroll">
     <% if show_profile_picture %>
