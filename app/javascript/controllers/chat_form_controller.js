@@ -5,18 +5,17 @@ export default class extends Controller {
 
   connect() {
     this.chatMessageInputTarget.focus();
-    console.log(this.messagesTarget);
   }
 
   submit(event) {
     event.preventDefault()
+    this.submitButtonTarget.disabled = true
     const message = this.chatMessageInputTarget.value.trim()
     if (message === "") {
       this.chatMessageInputTarget.focus();
       return;
     } 
     
-    this.submitButtonTarget.disabled = true
     // Show loading state
     this.submitIconTarget.classList.add("hidden")
     this.loadingIconTarget.classList.remove("hidden")
@@ -24,7 +23,6 @@ export default class extends Controller {
     // Submit the form
     this.formTarget.requestSubmit()
     
-    // Clear the input
     this.chatMessageInputTarget.value = ""
     this.chatMessageInputTarget.focus();
   }
