@@ -89,7 +89,7 @@ class GenerateAssistantResponseJob < ApplicationJob
         locals: { content: message, show_profile_picture: index.zero? }
       )
 
-      sleep(rand(600...1200) / 1000)
+      sleep(rand(2000...3000) / 1000)
     end
 
     messages.join("\n")
