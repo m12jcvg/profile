@@ -1,9 +1,9 @@
 <%= turbo_stream_from "messages_#{@chat.id}" %>
 
-<div class="chat-modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" data-controller="chat-form">
-  <div class="chat-container bg-white w-full max-w-md rounded-lg shadow-xl flex flex-col h-[600px]">
+<div class="fixed inset-0 z-50 flex justify-center items-end sm:items-center sm:bg-black sm:bg-opacity-50" data-controller="chat-form">
+  <div class="bg-white w-full max-w-md rounded-lg shadow-xl flex flex-col h-[100%] sm:h-[600px]">
     <!-- Modal Header -->
-    <div class="chat-header flex justify-between items-center p-4 border-b">
+    <div class="flex justify-between items-center p-4 border-b">
       <h3 class="text-lg font-semibold">Chat with Julio</h3>
       <%= link_to end_chat_path, class: "text-gray-500 hover:text-gray-700", data: { turbo_stream: true }  do %>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,7 +32,7 @@
 
     <!-- Chat Input -->
     <div class="chat-input border-t p-4">
-      <%= form_with(url: new_message_path(chat_id:), class: "flex space-x-2", data: { chat_form_target: "form", action: 'turbo:submit-end->chat-form#submitEnd' }) do |f| %>
+      <%= form_with(url: new_message_path(chat_id: @chat.id), class: "flex space-x-2", data: { chat_form_target: "form", action: 'turbo:submit-end->chat-form#submitEnd' }) do |f| %>
         <%= f.text_field :content,
             class: "flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500",
             placeholder: "Type your message...",
