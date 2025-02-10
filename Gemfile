@@ -68,4 +68,4 @@ end
 
 gem "tiktoken_ruby", "~> 0.0.11"
 
-gem "ruby-openai", "~> 7.3"
+gem "ruby-openai", "~> 7.4"
